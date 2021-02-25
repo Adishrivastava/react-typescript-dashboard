@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 interface Props {
 
@@ -6,8 +6,13 @@ interface Props {
 
 const Navbar: React.FC<Props> = () => {
    return (
-      <div>
-
+      <div className="navbar">
+         <header>Dashboard</header>
+         <select id="lan-select">
+            <option value="eng">ENG
+            </option>
+            <option value="hin">Hindi</option>
+         </select>
       </div>
    )
 }
