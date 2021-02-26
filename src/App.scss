@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300&display=swap');
 
-$fontcolor1: #252727;
-$fontcolor2: #848c8c;
-$fontcolor3: #b3c0c0;
-$bodyBackground: rgb(207, 199, 209);
+$fontcolor1: #2c2c2c;
+$fontcolor2: #898989;
+$fontcolor3: #c0c0c0;
+$bodyBackground: rgb(214, 218, 228);
 $componentBackground: white;
 
 @mixin border($color) {
@@ -73,6 +73,7 @@ p {
 				border-radius: 50%;
 				display: inline-block;
 				border-radius: 50%;
+				cursor: pointer;
 			}
 		}
 		.details-section {
@@ -104,11 +105,16 @@ p {
 			font-weight: 500;
 			padding: 15px 0px;
 			border-bottom: 1px solid $fontcolor3;
-		}
 
-		.menu-icon {
-			color: $fontcolor2;
-			margin-right: 10px;
+			cursor: pointer;
+
+			&:hover .menu-icon {
+				color: rgb(19, 84, 214);
+			}
+			.menu-icon {
+				color: $fontcolor2;
+				margin-right: 10px;
+			}
 		}
 
 		.recently-viewed {
@@ -116,9 +122,11 @@ p {
 			margin: 15px 0;
 			padding-top: 10px;
 			.subhead {
-				font-size: 0.8em;
+				font-size: 0.7em;
 				color: $fontcolor2;
+				font-weight: bold;
 				margin-bottom: 10px;
+				text-transform: uppercase;
 			}
 			.recent-items {
 				font-size: 0.8em;
@@ -126,7 +134,8 @@ p {
 				padding: 7px 0px;
 				display: flex;
 				justify-content: space-between;
-
+				font-weight: 500;
+				cursor: pointer;
 				.recent-icons {
 					color: $fontcolor2;
 				}
@@ -137,8 +146,10 @@ p {
 			font-size: 0.7em;
 			position: absolute;
 			bottom: 10px;
+			font-weight: bold;
 			.subtext {
 				margin-top: 5px;
+				font-weight: 500;
 				color: $fontcolor2;
 			}
 		}
@@ -147,6 +158,8 @@ p {
 
 .main {
 	width: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
 
 	.navbar {
 		width: 100%;
@@ -172,6 +185,8 @@ p {
 
 		.daily-visitors {
 			margin: 20px;
+			padding: 20px;
+			border: 1px solid $fontcolor3;
 			background-color: $componentBackground;
 			.top-heading {
 				width: auto;
@@ -179,24 +194,141 @@ p {
 				display: flex;
 				justify-content: space-between;
 				padding: 10px;
-				h2 {
+				h3 {
 					margin: 0;
+					color: $fontcolor1;
+				}
+			}
+			color: rgb(24, 47, 149);
+
+			.bar-chart {
+				margin-top: 30px;
+				width: 100%;
+				height: 170px;
+			}
+		}
+
+		.middle-grid {
+			margin: 20px;
+			display: grid;
+			grid-gap: 1.5em;
+			grid-template-columns:
+				minmax(150px, 1fr) minmax(150px, 1fr) minmax(150px, 1fr)
+				minmax(150px, 1fr);
+			justify-content: center;
+			text-align: center;
+
+			.grid-items {
+				background-color: $componentBackground;
+				padding: 20px;
+				border: 1px solid $fontcolor3;
+
+				.heading-grid {
+					color: $fontcolor2;
+					text-transform: uppercase;
+					margin: 0;
+					font-size: 0.7em;
+					font-weight: bold;
+				}
+				h1 {
+					margin: 8px;
+					color: $fontcolor1;
+				}
+				.per-change {
+					margin: 0;
+					color: green;
+				}
+				.line-charts-show {
+					height: 70px;
+					width: 100%;
+					margin-top: 20px;
+				}
+			}
+		}
+
+		.tables {
+			margin: 20px;
+			display: grid;
+			grid-gap: 1.5em;
+			grid-template-columns: 3fr 1fr;
+
+			h3 {
+				margin: 0px;
+				padding-bottom: 20px;
+				border-bottom: 1px solid $fontcolor3;
+			}
+
+			.most-visited-pages {
+				border: 1px solid $fontcolor3;
+				background-color: $componentBackground;
+				padding: 20px;
+
+				.share-icon {
+					color: $fontcolor2;
+					float: right;
+				}
+
+				.line-charts-table {
+					height: 30px;
+					width: 100px;
+					padding: 0px;
 				}
 			}
 
-			.line-chart {
-				width: 100%;
-				height: 250px;
+			.social-media-traffic {
+				padding: 20px;
+				background-color: $componentBackground;
+				border: 1px solid $fontcolor3;
+
+				.process-line {
+					border-radius: 10px;
+					width: 160px;
+					height: 5px;
+					overflow: hidden;
+					background-color: $fontcolor3;
+
+					.checked {
+						border-radius: 10px;
+						height: 6px;
+						background-color: rgb(12, 46, 106);
+					}
+				}
 			}
+		}
+	}
+}
+
+table {
+	width: 100%;
+	thead {
+		color: $fontcolor2;
+		font-weight: 400;
+		text-align: left;
+		border-bottom: 1px solid rgb(12, 43, 106);
+		padding: 20px;
+	}
+	tr {
+		padding: 10px 0px;
+		font-size: 0.9em;
+		th {
+			padding: 10px;
+			font-size: 0.8em;
+			height: 40px;
+			text-transform: uppercase;
+		}
+		td {
+			height: 40px;
+			padding: 13px;
 		}
 	}
 }
 
 select {
 	background-color: transparent;
-	border: none;
-	padding: 0 1em 0 0;
-	margin: 0;
+	border: 1px solid rgb(176, 176, 176);
+	padding: 5px 5px 5px 5px;
+	border-radius: 3px;
+	margin: 0 10px;
 	font-family: inherit;
 	font-size: inherit;
 	cursor: inherit;
@@ -205,13 +337,13 @@ select {
 	text-transform: uppercase;
 
 	option {
-		padding: 10px;
-		background-color: red;
+		padding: 15px;
+		margin: 10px;
 	}
 	&:hover,
 	&:active,
 	&:focus {
-		border: none;
+		// border: none;
 		outline: none;
 	}
 }

@@ -1,6 +1,6 @@
-import { faCalendar, faCog, faHome, faHotTub, faIndent, faLongArrowAltRight, faThLarge } from '@fortawesome/free-solid-svg-icons'
+import { faCalendar, faCog, faHome, faHotTub, faInbox, faIndent, faLongArrowAltRight, faThLarge } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 
 interface Props {
 
@@ -15,14 +15,19 @@ export const MenuSection: React.FC = () => {
          </div>
          <div className="menu-item">
             <FontAwesomeIcon className="menu-icon" icon={faCalendar} />
+            Calendar
+         </div>
+         <div className="menu-item">
+            <FontAwesomeIcon className="menu-icon" icon={faInbox} />
             Inbox
          </div>
          <div className="menu-item">
             <FontAwesomeIcon className="menu-icon" icon={faIndent} />
-            Invoicing</div>
+            Invoicing
+         </div>
          <div className="menu-item">
             <FontAwesomeIcon className="menu-icon" icon={faHotTub} />
-            Lab/Experiment
+            Lab / Experimental
          </div>
 
          <div className="recently-viewed">
@@ -57,15 +62,40 @@ export const MenuSection: React.FC = () => {
 
 
 const Sidebar: React.FC<Props> = () => {
+
+   const [proImage, setProImage] = useState('pp.jpg')
+
+   const proRef = useRef<HTMLInputElement>(null)
+
+   const handleChangeClick = (evt: any) => {
+      evt.preventDefault();
+      if (proRef.current !== null) {
+         proRef.current.click()
+      }
+   }
+   const handleImageChange = (evt: any) => {
+      evt.preventDefault();
+      if (proRef.current) {
+         console.log(proRef.current.value);
+         // setProImage(evt.target.value)
+      } else {
+         setProImage('')
+      }
+   }
+
+   const styles = {
+      backgroundImage: 'url(' + proImage + ')'
+   }
+
    return (
       <div className="sidebar-section">
          <div className="top-nav-section">
             <FontAwesomeIcon icon={faHome} />
          </div>
          <div className="profile-section">
-            <div className="image-container">
-
-               <div className="change-icon">
+            <div className="image-container" style={styles}>
+               <input type="file" onChange={handleImageChange} ref={proRef} style={{ display: 'none' }} />
+               <div className="change-icon" onClick={handleChangeClick}>
                   <FontAwesomeIcon icon={faCog} />
                </div>
             </div>
