@@ -31,6 +31,7 @@ p {
   border-right: #c0c0c0 1px solid;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+  overflow-y: scroll;
 }
 
 .sidebar-section .top-nav-section {
@@ -166,8 +167,9 @@ p {
 
 .sidebar-section .menu-section .bottom-section {
   font-size: 0.7em;
-  position: absolute;
-  bottom: 10px;
+  width: 100%;
+  border-top: 1px solid #c0c0c0;
+  padding-top: 10px;
   font-weight: bold;
 }
 
@@ -175,6 +177,25 @@ p {
   margin-top: 5px;
   font-weight: 500;
   color: #898989;
+}
+
+.sidebar-section::-webkit-scrollbar {
+  width: 15px;
+}
+
+.sidebar-section {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+.sidebar-section::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+
+.sidebar-section::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 10px;
+  border: 3px solid var(--scrollbarBG);
 }
 
 .main {
