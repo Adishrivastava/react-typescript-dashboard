@@ -336,7 +336,6 @@ p {
   border: 1px solid #c0c0c0;
   background-color: white;
   padding: 20px;
-  overflow-x: scroll;
 }
 
 .main .main-container .tables .most-visited-pages .share-icon {
@@ -440,6 +439,7 @@ select:hover, select:active, select:focus {
   .most-visited-pages {
     display: block !important;
     overflow-x: scroll;
+    margin-bottom: 20px;
   }
   .social-media-traffic {
     display: block !important;
@@ -475,6 +475,11 @@ select:hover, select:active, select:focus {
 @media only screen and (max-width: 1100px) {
   .tables {
     display: block !important;
+  }
+  .most-visited-pages {
+    display: block !important;
+    overflow-x: scroll;
+    margin-bottom: 20px;
   }
 }
 /*# sourceMappingURL=App.css.map */
