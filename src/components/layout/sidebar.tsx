@@ -1,9 +1,11 @@
-import { faCalendar, faCog, faHome, faHotTub, faInbox, faIndent, faLongArrowAltRight, faThLarge } from '@fortawesome/free-solid-svg-icons'
+import { faCalendar, faCog, faHome, faHotTub, faInbox, faIndent, faLongArrowAltRight, faThLarge, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef, useState } from 'react'
 
 interface Props {
-
+   menuShow: any,
+   width: number,
+   setMenuShow: any
 }
 
 export const MenuSection: React.FC = () => {
@@ -61,7 +63,7 @@ export const MenuSection: React.FC = () => {
 }
 
 
-const Sidebar: React.FC<Props> = () => {
+const Sidebar: React.FC<Props> = ({ menuShow, width, setMenuShow }) => {
 
    const [proImage, setProImage] = useState('pp.jpg')
 
@@ -88,8 +90,12 @@ const Sidebar: React.FC<Props> = () => {
    }
 
    return (
-      <div className="sidebar-section">
-         <div className="top-nav-section">
+      <div className="sidebar-section" style={(width > 900) ? {} : menuShow ? { position: 'absolute', left: '0px' } : { position: 'absolute', left: '-100%' }} >
+         <div className="top-nav-section" style={width > 900 ? {} : { justifyContent: 'space-between' }}>
+            {width < 900 && (
+               <FontAwesomeIcon icon={faTimes} className="menuIcons" onClick={(e) => setMenuShow((val: any) => !val)} />
+
+            )}
             <FontAwesomeIcon icon={faHome} />
          </div>
          <div className="profile-section">

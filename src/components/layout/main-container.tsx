@@ -7,13 +7,16 @@ import LineChart from '../features/charts/line-chart'
 import Navbar from './navbar'
 
 interface Props {
-
+   width: number,
+   setMenuShow: any
 }
 
-const Main: React.FC<Props> = () => {
+const Main: React.FC<Props> = ({ width, setMenuShow }) => {
    return (
       <div className="main">
-         <Navbar />
+
+         <Navbar width={width} setMenuShow={setMenuShow} />
+
          <div className="main-container">
             <div className="daily-visitors">
                <div className="top-heading">
@@ -29,7 +32,7 @@ const Main: React.FC<Props> = () => {
                </div>
 
                <div className="bar-chart">
-                  <BarChart />
+                  <BarChart width={width} />
                </div>
 
             </div>

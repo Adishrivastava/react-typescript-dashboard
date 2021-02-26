@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { barchartlabels, barchartvalues } from '../../../constants'
 
 interface Props {
-
+   width: number
 }
 
-const BarChart: React.FC<Props> = () => {
+const BarChart: React.FC<Props> = ({ width }) => {
+
+   const [barWidth, setBarWidth] = useState<number>(15)
+
+   useEffect(() => {
+      if (width > 900) {
+         setBarWidth(15)
+      } else {
+         setBarWidth(5)
+      }
+   }, [width])
+
 
    const data = {
       labels: barchartlabels,
@@ -16,7 +27,7 @@ const BarChart: React.FC<Props> = () => {
             data: barchartvalues,
             backgroundColor: 'rgb(31, 64, 226)',
             barPercentage: 1,
-            barThickness: 15,
+            barThickness: barWidth,
             hoverBackgroundColor: 'rgb(24, 47, 149)',
             pointRadius: 0,
             pointHoverRadius: 20,
